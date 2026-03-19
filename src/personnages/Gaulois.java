@@ -1,8 +1,11 @@
 package personnages;
 
+import village_gaulois.Village;
+
 public class Gaulois {
 	private String nom;
 	private int force;
+	private Village village;
 	
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -25,10 +28,19 @@ public class Gaulois {
 		Gaulois asterix= new Gaulois("Astérix", 8);
 		System.out.print(asterix);
 	}
-
+	
+	public void setVillage(Village village) {
+		this.village = village;
+	}
 	public String toString() {
 		return nom;
 	}
 	
+	public void frapper (Romain romain) {
+		String nomRomain = romain.getNom();
+		System.out.println(nom+" envoie un grand coup a la machoire de "+ nomRomain);
+		int forceCoup= force/3;
+		romain.recevoirCoup(forceCoup);
+	}
 	
 }
