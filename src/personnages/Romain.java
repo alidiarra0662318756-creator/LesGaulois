@@ -5,6 +5,8 @@ import objets.Equipement;
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement[] equipements;
+	private int nbEquipement = 0;
 	private String texte;
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -16,6 +18,7 @@ public class Romain {
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "\"" + texte + "\"");
 	}
+
 	private String prendreParole() {
 		return "Le Romain " + nom + " : ";
 	}
@@ -31,21 +34,18 @@ public class Romain {
 
 	public Equipement[] recevoirCoup(int forceCoup) {
 		Equipement[] equipementEjecte = null;
-		forceCoup = CalculResistanceEquipement(forceCoup);
+		forceCoup = calculResistanceEquipement(forceCoup);
 		force -= forceCoup;
-		switch (force) {
-		case 0:
-		parler("Aïe");
-		break;
-		default:
-		equipementEjecte = ejecterEquipement();
-		parler("J'abandonne...");
-		break;
+		if (force==0) {
+			parler("Aïe");
+		}else {
+			equipementEjecte = ejecterEquipement();
+			parler("J'abandonne...");
 		}
 		return equipementEjecte;
 	}
 
-	private int CalculResistanceEquipement(int forceCoup) {
+	private int calculResistanceEquipement(int forceCoup) {
 		texte = "Ma force est de " + this.force + ", et la force du coup est de" + forceCoup;
 		int resistanceEquipement = 0;
 		if (!(nbEquipement == 0)) {
