@@ -22,8 +22,4 @@ public class Village {
 		return nom;
 	}
 	
-	public int ajouterHabitant(Gaulois gaulois) {
-		
-	}
-	
 }
